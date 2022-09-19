@@ -5,7 +5,7 @@ using UnityEngine;
 public class _09_15_Test : MonoBehaviour
 {
     float second;
-    float MaxDistence = 100f;
+    
     
     void Start()
     {

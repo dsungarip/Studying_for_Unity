@@ -7,8 +7,10 @@ public class _09_16_ResourcesLoad : MonoBehaviour
     
     void Start()
     {
-        //Resources.Load : 파일확장자X, 폴더구분 /,\ 다가능
-        //리소스를 로드하는 두가지 방법
+        // Resources.Load : 빌드시 포함된 에셋에 메모리에 불러오는 함수이다.
+        // 불러오기 위해선 Resources 폴더가 있어야만 한다.
+        // 파일확장자X, 폴더구분 /,\ 다가능
+        // 리소스를 로드하는 두가지 방법
         GameObject obj_1 = Resources.Load("Golem") as GameObject;
         GameObject obj_2 = Resources.Load<GameObject>("Golem");
 

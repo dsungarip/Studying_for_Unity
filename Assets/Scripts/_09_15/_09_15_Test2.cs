@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class _09_15_Test2 : MonoBehaviour
 {
-	float time=0;
+	
     void Start()
     {
-		time = 0;
+		
     }
 
 	private void OnCollisionEnter(Collision collision)
