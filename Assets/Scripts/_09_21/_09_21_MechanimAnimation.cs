@@ -10,19 +10,35 @@ public class _09_21_MechanimAnimation : MonoBehaviour
     public Animator ani;
     float speed = 5f;
     float rSpeed = 10f;
-    Vector3 end;
+    public Vector3 end { get; set; }
     int state;
     RaycastHit hitInfo;
     Ray ray;
-    Transform target;
+    public Transform target { get; set; }
+    public float attackRange { get; set; }
     Vector3 t_Pos;
 
     void Start()
     {
         target = null;
+        attackRange = 2f;
     }
 
-    
+    public void PlayerMove()
+	{
+        Vector3 movepos = Vector3.MoveTowards(transform.position, end, Time.deltaTime * speed);
+		movepos.y = transform.position.y;
+        transform.position = movepos;
+    }
+    public void PlayerRotate()
+	{
+        Vector3 tmpEnd = end;
+        tmpEnd.y = transform.position.y;
+
+        Vector3 dir = tmpEnd - transform.position;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, dir.normalized, Time.deltaTime * rSpeed, 0);
+        transform.rotation = Quaternion.LookRotation(newDir.normalized);
+    }
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -48,41 +64,34 @@ public class _09_21_MechanimAnimation : MonoBehaviour
                     end = hitInfo.point;
                 }
             }
-
         }
-        if(target != null)
-		{
-            float distance = Vector3.Distance(target.position, transform.position);
-            if (distance <= 2)
-			{
-                end = transform.position;
+  //      if(target != null)
+		//{
+  //          float distance = Vector3.Distance(target.position, transform.position);
+  //          if (distance <= 2)
+		//	{
+  //              end = transform.position;
 
-                Vector3 dire = target.position - transform.position;
-                Quaternion quat = Quaternion.LookRotation(dire);
-                transform.rotation = Quaternion.Lerp(transform.rotation, quat, 10 * Time.deltaTime);
+  //              Vector3 dire = target.position - transform.position;
+  //              Quaternion quat = Quaternion.LookRotation(dire);
+  //              transform.rotation = Quaternion.Lerp(transform.rotation, quat, 10 * Time.deltaTime);
 
-                ani.SetInteger("aniIndex", 2);
-            }
-			else
-			{
-                ani.SetInteger("aniIndex", 1);
-            }
-        }
-        else
-		{
-            if (end == transform.position) { ani.SetInteger("aniIndex", 0); }
-            else { ani.SetInteger("aniIndex", 1); }
-        }
+  //              ani.SetInteger("aniIndex", 2);
+  //          }
+		//	else
+		//	{
+  //              ani.SetInteger("aniIndex", 1);
+  //          }
+  //      }
+  //      else
+		//{
+  //          if (end == transform.position) { ani.SetInteger("aniIndex", 0); }
+  //          else { ani.SetInteger("aniIndex", 1); }
+  //      }
+  //      end.y = transform.position.y;
+        
 
-        end.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, end, Time.deltaTime * speed);
 
-        Vector3 tmpEnd = end;
-        tmpEnd.y = transform.position.y;
-
-        Vector3 dir = tmpEnd - transform.position;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, dir.normalized, Time.deltaTime * rSpeed, 0);
-        transform.rotation = Quaternion.LookRotation(newDir.normalized);
     }
 
     void InputMouse()
