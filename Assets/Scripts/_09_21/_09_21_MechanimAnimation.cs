@@ -65,6 +65,10 @@ public class _09_21_MechanimAnimation : MonoBehaviour
                 }
             }
         }
+        if(Input.GetKeyDown(KeyCode.Q))
+		{
+            ani.SetTrigger("die");
+		}
   //      if(target != null)
 		//{
   //          float distance = Vector3.Distance(target.position, transform.position);
