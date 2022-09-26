@@ -36,6 +36,25 @@ public class Idle : StateMachineBehaviour
 				animator.SetInteger("aniIndex", 1);
 			}
 		}
+		else
+		{
+			if (player.target != null)
+			{
+				float distance = Vector3.Distance(player.transform.position, player.target.position);
+				if (distance <= player.attackRange)
+				{
+					animator.SetInteger("aniIndex", 2);
+				}
+				else
+				{
+					animator.SetInteger("aniIndex", 1);
+				}
+			}
+			else
+			{
+				animator.SetInteger("aniIndex", 0);
+			}
+		}
 	}
 
 	// OnStateExit은 전환이 종료되고 상태 시스템이 이 상태 평가를 마치면 호출됩니다.

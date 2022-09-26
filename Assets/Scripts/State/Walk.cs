@@ -17,11 +17,11 @@ public class Walk : StateMachineBehaviour
 	{
 		player.PlayerMove();
 		player.PlayerRotate();
-
-		if(player.target == null)
+		if (player.target == null)
 		{
 			if(player.transform.position == player.end)
 			{
+				Debug.Log("나실행되니");
 				animator.SetInteger("aniIndex", 0);
 			}
 
