@@ -45,7 +45,7 @@ public class _09_21_MechanimAnimation : MonoBehaviour
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity ))
             {
                 
                 if(hitInfo.collider.CompareTag("Monster"))

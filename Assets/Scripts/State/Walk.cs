@@ -15,6 +15,8 @@ public class Walk : StateMachineBehaviour
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
+		float time = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
 		player.PlayerMove();
 		player.PlayerRotate();
 		if (player.target == null)

@@ -8,7 +8,9 @@ public class _09_27_MainScene : MonoBehaviour
 	void Awake()
 	{
         characterList = new List<GameObject>();
-        CreateInstance("TrollGiant"); 
+        CreateInstance("TrollGiant");
+
+        
     }
 
     public void CreateInstance(string _name)
