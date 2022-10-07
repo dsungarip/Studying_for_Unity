@@ -8,7 +8,7 @@ public class _09_30_Character : MonoBehaviour
     public float rotateSpeed = 500.0f;
     void Start()
     {
-        
+        Debug.Log(Camera.main.transform.eulerAngles);
     }
 
     // Update is called once per frame
@@ -33,8 +33,8 @@ public class _09_30_Character : MonoBehaviour
     void Move()
 
     {
-
         float x = Input.GetAxis("Horizontal");
+       
 
         float y = Input.GetAxis("Vertical");
 
@@ -48,9 +48,7 @@ public class _09_30_Character : MonoBehaviour
 
         // 거리구하기
 
-        float fDis = Vector3.Distance(new Vector3(10, 0, 0),
-
-        transform.position);
+        float fDis = Vector3.Distance(new Vector3(10, 0, 0),transform.position);
 
         if (fDis < 1.0f)
 

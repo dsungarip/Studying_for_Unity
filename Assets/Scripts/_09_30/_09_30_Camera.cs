@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class _09_30_Camera : MonoBehaviour
 {
-    public _09_30_Character1 Player;
-    Vector3 camPos = new Vector3(0f, 10f, -10f);
-    Vector3 playerPos;
+    public _09_30_Manager Player;
+    public GameObject obj;
+    Vector3 playerOldPos;
+
     void Start()
     {
-        playerPos = Player.transform.position;
-
-        transform.position = playerPos - new Vector3(0f, 10f, -10f);
-        transform.rotation = Quaternion.Euler(45f, 0, 0);
-        
+        playerOldPos = Player.cam.transform.position;
+        obj = Player.GetComponent<GameObject>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = Player.transform.position + camPos;
+        Vector3 delta = Player.transform.position - playerOldPos;
+        transform.position += delta;
+        playerOldPos = Player.transform.position;
     }
 }

@@ -7,7 +7,7 @@ public class _09_30_Character1 : MonoBehaviour
     Vector3 end;
     public float speed = 5.0f;
     public float rSpeed = 5.0f;
-    void Start()
+    void Awake()
     {
         gameObject.transform.position = new Vector3(0f, 0.5f, 0f);
     }
